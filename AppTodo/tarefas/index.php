@@ -2,11 +2,11 @@
 require ('config.php');
 
 //Consultar registos da Base de dados
-$query = "SELECT * FROM tarefas";
+$query = "SELECT * FROM categorias";
 $stmt = $db->prepare($query);
 $stmt->execute();
-$tarefa = $stmt->fetchAll();
-$tarefas = $stmt->rowCount();
+$tarefas = $stmt->fetchAll();
+$nrtarefas = $stmt->rowCount();
 ?>
 
 <!doctype html>
@@ -26,14 +26,14 @@ $tarefas = $stmt->rowCount();
 <body>
     <div class="container">
         <h1><?php echo $appName; ?></h1>
-        <h3>Consulta de Alunos</h3>
+        <h3>Consulta de tarefas</h3>
         <a href="create.php" class="btn btn-primary">Criar Novo</a>
         <?php 
-            if ($tarefas == 0) {
+            if ($nrtarefas == 0) {
                 echo "<p><strong>Ainda sem alunos inscritos</strong></p>";
             } else {
         ?>
-                <p><strong>Encontramos <?php echo $tarefas; ?> tarefas</strong></p>
+                <p><strong>Encontramos <?php echo $nrtarefas; ?> tarefas</strong></p>
                 <table class="table">
                     <thead>
                         <tr>
@@ -46,14 +46,14 @@ $tarefas = $stmt->rowCount();
                     </thead>
                     <tbody>
                         <?php 
-                            foreach ($tarefa as $tarefas) {
+                            foreach ($tarefas as $tarefa) {
                         ?>
                                 <tr>
-                                    <td><?php echo $tarefas['id'] ?></td>
-                                    <td><?php echo $tarefas['nome'] ?></td>
-                                    <td><?php echo $tarefas['descricao'] ?></td>
-                                    <td><?php echo $tarefas['prazodia'] ?></td>
-                                    <td><?php echo $tarefas['prazohora'] ?></td>
+                                    <td><?php echo $tarefa['id'] ?></td>
+                                    <td><?php echo $tarefa['nome'] ?></td>
+                                    <td><?php echo $tarefa['descricao'] ?></td>
+                                    <td><?php echo $tarefa['prazodia'] ?></td>
+                                    <td><?php echo $tarefa['prazohora'] ?></td>
                                     <td>
                                         <a href="edit.php?id=<?php echo $tarefa['id'];?>" class="btn btn-warning btn-sm">Editar</a>
                                         <a href="delete.php?id=<?php echo $tarefa['id'];?>" class="btn btn-danger btn-sm">Apagar</a>

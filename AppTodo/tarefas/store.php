@@ -5,7 +5,7 @@ require ('config.php');
 
 
 //Gravar na Base de dados
-$query = "INSERT INTO tarefas (id, nome, descricao, prazodia, prazohora) VALUES (:id, :nome, :decricao, :prazodia, :prazohora)";
+$query = "INSERT INTO categorias (id, nome, descricao, prazodia, prazohora) VALUES (:id, :nome, :decricao, :prazodia, :prazohora)";
 $stmt = $db->prepare($query);
 $stmt->bindParam(':id', $_POST['id']);
 $stmt->bindParam(':nome', $_POST['nome']);

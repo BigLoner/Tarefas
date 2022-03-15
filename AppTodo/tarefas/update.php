@@ -5,15 +5,15 @@ require ('config.php');
 
 
 //Gravar na Base de dados
-$query = "  UPDATE tarefas 
+$query = "  UPDATE categorias 
             SET id = :id, nome = :nome, descricao = :descricao, prazodia = :prazodia , prazohora = :prazohora 
             WHERE id = :id
         ";
 $stmt = $db->prepare($query);
-$stmt->bindParam(':nrprocesso', $_POST['nrprocesso']);
 $stmt->bindParam(':nome', $_POST['nome']);
-$stmt->bindParam(':email', $_POST['email']);
-$stmt->bindParam(':telefone', $_POST['telefone']);
+$stmt->bindParam(':descricao', $_POST['descricao']);
+$stmt->bindParam(':prazodia', $_POST['prazodia']);
+$stmt->bindParam(':prazohora', $_POST['prazohora']);
 $stmt->bindParam(':id', $_POST['id']);
 $stmt->execute();
 ?>

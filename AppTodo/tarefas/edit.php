@@ -1,6 +1,6 @@
 <?php 
     require ('config.php');
-    $query = "SELECT * FROM tarefas WHERE id = :id";
+    $query = "SELECT * FROM categorias WHERE id = :id";
     $stmt = $db->prepare($query);
     $stmt->bindParam(':id', $_GET['id']);
     $stmt->execute();

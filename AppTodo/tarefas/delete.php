@@ -5,7 +5,7 @@ require ('config.php');
 
 
 //Gravar na Base de dados
-$query = "DELETE FROM tarefas WHERE id = :id";
+$query = "DELETE FROM categorias WHERE id = :id";
 $stmt = $db->prepare($query);
 $stmt->bindParam(':id', $_GET['id']);
 $stmt->execute();
